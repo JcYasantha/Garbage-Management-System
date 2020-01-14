@@ -5,7 +5,7 @@
             Create A Bin
         </div>
         <div class="card-body">
-            <form action="/bin/store" method="post">
+            <form action="<?php echo base_url(); ?>/bin/store" method="post">
                 <div class="form-group">
                     <label for="City">City</label>
                     <input class="form-control" id="City" name="city" placeholder="Enter the City">
