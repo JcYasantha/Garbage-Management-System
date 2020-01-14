@@ -24,7 +24,7 @@ class Bin extends Controller
                 'best_route'  => 'required|min_length[3]'
             ]))
             {
-                echo view('dustbin/create');
+                return view('dustbin/create');
 
             }
             else

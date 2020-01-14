@@ -6,7 +6,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script src = "https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <head>
-    <title>Sign In</title>
+    <title>Garbage Management System</title>
 
     <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
 </head>
@@ -28,3 +28,4 @@
 
         </div>
     </nav>
+    <?= $this->include('partials/success') ?>
