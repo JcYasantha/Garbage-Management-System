@@ -76,6 +76,10 @@ $routes->get('/', 'Home::index');
 $routes->get('(adddriver)', 'adddriver::index');
 $routes->get('(driver_details)', 'driver_details::index');
 
+//routes for dustbin
+$routes->get('bin/create','Bin::create');
+$routes->post('bin','Bin::store');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

@@ -4,7 +4,7 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return view('dustbin/create');
+		return view('welcome_message');
 	}
 
 	//--------------------------------------------------------------------
