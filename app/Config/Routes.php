@@ -74,6 +74,10 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+//routes for dustbin
+$routes->get('bin/create','Bin::create');
+$routes->post('bin','Bin::store');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

@@ -18,19 +18,26 @@ class CreateTableBin extends Migration
                                 'constraint'     => '100',
                         ],
                         'destination' => [
-								'type'           => 'TEXT',
-								'constraint'     => '100'
-						],
-						'best_route' => [
-							'type'           => 'TEXT',
-							'constraint'     => '255',
-							'null'           => TRUE,
-						],
-						'driver_id' => [
-							'type'           => 'TEXT',
-							'constraint'     => '255',
-							'null'           => TRUE,
-						],
+				'type'           => 'VARCHAR',
+				'constraint'     => '100'
+			],
+			'best_route' => [
+				'type'           => 'TEXT',
+				'constraint'     => '255',
+			],
+			'driver_id' => [
+				'type'           => 'TEXT',
+                                'constraint'     => '255',
+                                'null'           => TRUE,
+                        ],
+                        'created_at' => [
+                                'type'           => 'TIMESTAMP',
+                                'null'           => TRUE,
+                        ],
+                        'updated' => [
+                                'type'           => 'TIMESTAMP',
+                                'null'           => TRUE,
+			],
                 ]);
                 $this->forge->addKey('id', TRUE);
                 $this->forge->createTable('bin');
