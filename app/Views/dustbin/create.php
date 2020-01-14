@@ -1,7 +1,6 @@
 <?= $this->include('partials/navbar') ?>
-<div class="container">
+<div class="container my-5">
     <div class="card my-5">
-    <?= $this->include('partials/success') ?>
         <div class="card-header">
             Create A Bin
         </div>

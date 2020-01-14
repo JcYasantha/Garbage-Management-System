@@ -4,7 +4,6 @@ use CodeIgniter\Model;
 
 class binModel extends Model
 {
-      
         protected $table      = 'bin';
         protected $primaryKey = 'id';
 
@@ -22,6 +21,7 @@ class binModel extends Model
 
         public function get_insert($Formarray)
         {
+           $session = \Config\Services::session($config);
            $db  = \Config\Database::connect();
            $query = $db->table('bin');
            $data = [
@@ -31,6 +31,8 @@ class binModel extends Model
             ];     
 
            if($query->insert($data)){
+               $_SESSION['success'] = 'New Bin Successfully Created';
+               $session->markAsFlashdata('success');
                echo view('dustbin/create');
            }else{
 

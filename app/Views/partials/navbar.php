@@ -28,3 +28,4 @@
 
         </div>
     </nav>
+    <?= $this->include('partials/success') ?>
