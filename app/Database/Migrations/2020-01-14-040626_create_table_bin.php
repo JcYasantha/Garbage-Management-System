@@ -29,15 +29,7 @@ class CreateTableBin extends Migration
 				'type'           => 'TEXT',
                                 'constraint'     => '255',
                                 'null'           => TRUE,
-                        ],
-                        'created_at' => [
-                                'type'           => 'TIMESTAMP',
-                                'null'           => TRUE,
-                        ],
-                        'updated' => [
-                                'type'           => 'TIMESTAMP',
-                                'null'           => TRUE,
-			],
+                        ]
                 ]);
                 $this->forge->addKey('id', TRUE);
                 $this->forge->createTable('bin');

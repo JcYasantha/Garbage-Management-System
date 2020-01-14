@@ -19,6 +19,13 @@ class binModel extends Model
         protected $validationMessages = [];
         protected $skipValidation     = false;
 
+        public function get_destination()
+        {
+           $db  = \Config\Database::connect();
+           $query = $db->table('bin');
+           
+           
+        }
         public function get_insert($Formarray)
         {
            $session = \Config\Services::session($config);

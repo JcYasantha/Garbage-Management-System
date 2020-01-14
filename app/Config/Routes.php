@@ -78,6 +78,9 @@ $routes->get('/', 'Home::index');
 $routes->get('bin/create','Bin::create');
 $routes->post('bin','Bin::store');
 
+//routes for complaints
+$routes->get('complaint/create','Complaint::create');
+$routes->post('complaint','Complaint::store');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
