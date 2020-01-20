@@ -72,7 +72,12 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Login::index');
+$routes->post('login','Login::login_user');
+// route since we don't have to scan directories.
+$routes->get('logout', 'Login::logout');
+
+$routes->add('dashboard', 'login::dash', ['as' => 'dashboard']);
 
 //routes for dustbin
 $routes->get('bin/create','Bin::create');

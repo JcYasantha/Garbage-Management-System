@@ -8,6 +8,7 @@ class Complaint extends Controller
 {
         public function index()
         {
+            
             $model = new complaintModel();
             $data['complaints'] = $model->findAll();
 
