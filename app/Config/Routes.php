@@ -79,6 +79,7 @@ $routes->get('bin/create','Bin::create');
 $routes->post('bin','Bin::store');
 
 //routes for complaints
+$routes->get('complaint/view','Complaint::index');
 $routes->get('complaint/create','Complaint::create');
 $routes->post('complaint','Complaint::store');
 /**

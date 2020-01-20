@@ -8,7 +8,10 @@ class Complaint extends Controller
 {
         public function index()
         {
-            return view('complaint/create');
+            $model = new complaintModel();
+            $data['complaints'] = $model->findAll();
+
+            return view('complaint/view',$data);
         }
         public function create()
         {
@@ -34,8 +37,9 @@ class Complaint extends Controller
             }
             else
             {
+                $place = $model->find($_POST['place']);
                 $data = [
-                    'place' => $_POST['place'],
+                    'place' => $place['destination'],
                     'complaint'    => $_POST['complaint']
                 ];
                 if($complaintModel->insert($data)){
@@ -44,7 +48,10 @@ class Complaint extends Controller
                     $_SESSION['success'] = 'Complaint Created';
                     $session->markAsFlashdata('success');
                     
-                    echo view('complaint/create',$data);
+                    $model = new complaintModel();
+                    $data['complaints'] = $model->findAll();
+
+                    return view('complaint/view',$data);
                 }
 
             }

@@ -3,6 +3,7 @@
     <div class="card my-5">
         <div class="card-header">
             Add a Complaint
+            <a type="button" href="<?php echo base_url(); ?>/complaint/view" class="btn btn-primary btn-sm mb-2 float-right">View All</a>
         </div>
         <div class="card-body">
             <form action="<?php echo base_url(); ?>/complaint/store" method="post">
