@@ -11,14 +11,19 @@ class binModel extends Model
 
         protected $allowedFields = ['city', 'destination', 'best_route', 'driver_id'];
 
-        protected $useTimestamps = true;
-        protected $createdField  = 'created_at';
-        protected $updatedField  = 'updated_at';
+
 
         protected $validationRules    = [];
         protected $validationMessages = [];
         protected $skipValidation     = false;
 
+        public function get_destination()
+        {
+           $db  = \Config\Database::connect();
+           $query = $db->table('bin');
+
+           
+        }
         public function get_insert($Formarray)
         {
            $session = \Config\Services::session($config);
