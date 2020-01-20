@@ -11,7 +11,7 @@ class newFilter implements FilterInterface
         $session = \Config\Services::session($config);
         if (!$_SESSION['logged_in'])
         {
-            return redirect('welcome_message');
+            return redirect('login');
         }
     }
 

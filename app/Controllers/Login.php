@@ -79,6 +79,6 @@ class Login extends Controller
         public function logout(){
             $session = \Config\Services::session($config);
             session_destroy();
-            return view('welcome_message');
+            return redirect('login');
         }
 }

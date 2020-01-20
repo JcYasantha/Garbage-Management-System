@@ -8,11 +8,11 @@ class Complaint extends Controller
 {
         public function index()
         {
-            
             $model = new complaintModel();
             $data['complaints'] = $model->findAll();
-
+    
             return view('complaint/view',$data);
+            
         }
         public function create()
         {
