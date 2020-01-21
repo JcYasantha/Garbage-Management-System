@@ -10,8 +10,9 @@ class Complaint extends Controller
         {
             $model = new complaintModel();
             $data['complaints'] = $model->findAll();
-
+    
             return view('complaint/view',$data);
+            
         }
         public function create()
         {
@@ -51,7 +52,7 @@ class Complaint extends Controller
                     $model = new complaintModel();
                     $data['complaints'] = $model->findAll();
 
-                    return view('complaint/view',$data);
+                    return redirect('complaint/view',$data);
                 }
 
             }
