@@ -15,10 +15,9 @@ class Complaint extends Controller
 
             $builder->select('*');
             $builder->join('users', 'users.id = complaint.user_id');
-            $query = $builder->get();
-            
+            $query = $builder->orderBy('resolve')->get();
+
             $data['complaints'] = $query->getResult('array');
-            
             return view('complaint/view',$data);
             
             
@@ -40,10 +39,9 @@ class Complaint extends Controller
 
             if (! $this->validate([
                 'place' => 'required',
-                'complaint'  => 'required|min_length[3]|max_length[255]'
+                'complaint'  => 'required|min_length[3]'
             ]))
             {
-                
                 return view('complaint/create',$data);
             }
             else
@@ -66,5 +64,15 @@ class Complaint extends Controller
                 }
 
             }
+        }
+
+        public function resolve($id){
+            $model = new complaintModel();
+            $data = [
+                'resolve' => 1
+            ];
+            $model->update($id, $data);
+            
+            return redirect('complaint');
         }
 }
