@@ -19,9 +19,15 @@ class CreateTableComplaint extends Migration
 					'complaint'       => [
 						'type'           => 'TEXT',
 						'constraint'     => '255',
+					],
+					'user_id'       => [
+						'type'           => 'INT',
+						'constraint'     => 5,
+						'unsigned'       => TRUE,
 					]
 			]);
 			$this->forge->addKey('id', TRUE);
+			$this->forge->addForeignKey('user_id','users','id');
 			$this->forge->createTable('complaint');
 	}
 

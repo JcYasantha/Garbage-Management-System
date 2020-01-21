@@ -9,7 +9,7 @@ class complaintModel extends Model
 
         protected $returnType = 'array';
 
-        protected $allowedFields = ['place', 'complaint'];
+        protected $allowedFields = ['place', 'complaint','user_id'];
 
 
 

@@ -6,6 +6,7 @@
             <tr>
                 <th scope="col">Place</th>
                 <th scope="col">Complaint</th>
+                <th scope="col">Added By</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -14,6 +15,7 @@
             <tr>
                 <th><?= $complaint['place'] ?></th>
                 <td><?= $complaint['complaint'] ?></td>
+                <td><?= $complaint['email'] ?></td>
                 <td>Otto</td>
             </tr>
         <?php endforeach ?>
