@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<?php session();?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Garbage Management System</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -22,7 +23,7 @@
         <div class="collapse navbar-collapse my-2 my-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-sign-out"></i> Log Out</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>/logout"><i class="fa fa-sign-out"></i> Log Out</a>
                 </li>
             </ul>
 

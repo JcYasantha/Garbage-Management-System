@@ -72,16 +72,21 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Login::index',['as' => 'login']);
+$routes->post('login','Login::login_user');
+// route since we don't have to scan directories.
+$routes->get('logout', 'Login::logout');
+
+$routes->add('dashboard', 'login::dash',['filter' => 'aunthenticate'],['as' => 'dashboard']);
 
 //routes for dustbin
-$routes->get('bin/create','Bin::create');
-$routes->post('bin','Bin::store');
+$routes->get('bin/create','Bin::create', ['filter' => 'aunthenticate']);
+$routes->post('bin','Bin::store', ['filter' => 'aunthenticate']);
 
 //routes for complaints
-$routes->get('complaint/view','Complaint::index');
-$routes->get('complaint/create','Complaint::create');
-$routes->post('complaint','Complaint::store');
+$routes->get('complaint','Complaint::index', ['filter' => 'aunthenticate']);
+$routes->get('complaint/create','Complaint::create', ['filter' => 'aunthenticate']);
+$routes->post('complaint/store','Complaint::store', ['filter' => 'aunthenticate']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

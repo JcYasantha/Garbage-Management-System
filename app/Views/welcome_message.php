@@ -147,26 +147,29 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center">Sign In</h5>
-                        <form class="form-signin">
+                        <?php if ($_SESSION['error']) : ?>
+                            <span class="text-danger">*<?php echo $_SESSION['error']; ?></span>
+                        <?php endif; ?>
+                        <form action="<?php echo base_url(); ?>/login" method="post">
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
-                                    required autofocus>
+                                <input type="text" id="inputEmail" name="email" class="form-control"
+                                    placeholder="Email address" autofocus>
                                 <label for="inputEmail">Email address</label>
+                                <span
+                                    class="text-danger"><?= \Config\Services::validation()->geterror('email'); ?></span>
                             </div>
 
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password"
-                                    required>
+                                <input type="password" id="inputPassword" name="password" class="form-control"
+                                    placeholder="Password">
                                 <label for="inputPassword">Password</label>
-                            </div>
-
-                            <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                <span
+                                    class="text-danger"><?= \Config\Services::validation()->geterror('password'); ?></span>
                             </div>
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign
                                 in</button>
-								<button class="btn btn-lg btn-danger btn-block text-uppercase" type="submit">Register</button>
+                            <button class="btn btn-lg btn-danger btn-block text-uppercase"
+                                type="submit">Register</button>
                             <hr class="my-4">
                         </form>
                     </div>
@@ -175,4 +178,4 @@
         </div>
     </div>
 
-	<?= $this->include('partials/footer') ?>
+    <?= $this->include('partials/footer') ?>
