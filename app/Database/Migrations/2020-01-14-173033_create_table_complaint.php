@@ -30,7 +30,7 @@ class CreateTableComplaint extends Migration
 						'unsigned'       => TRUE,
 					]
 			]);
-			$this->forge->addKey('id', TRUE);
+			$this->forge->addKey('Cid', TRUE);
 			$this->forge->addForeignKey('user_id','users','id');
 			$this->forge->createTable('complaint');
 	}
