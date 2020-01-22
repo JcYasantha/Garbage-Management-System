@@ -9,10 +9,9 @@ class Complaint extends Controller
 {
         public function index()
         {
-            $db      = \Config\Database::connect();
-
+            $db = \Config\Database::connect();
+        
             $builder=$db->table('complaint');
-
             $builder->select('*');
             $builder->join('users', 'users.id = complaint.user_id');
             $query = $builder->orderBy('resolve')->get();
