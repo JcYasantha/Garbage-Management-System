@@ -3,15 +3,22 @@
 use CodeIgniter\Controller;
 use App\Models\complaintModel;
 use App\Models\binModel;
+use App\Models\userModel;
 
 class Complaint extends Controller
 {
         public function index()
         {
-            $model = new complaintModel();
-            $data['complaints'] = $model->findAll();
-    
+            $db = \Config\Database::connect();
+        
+            $builder=$db->table('complaint');
+            $builder->select('*');
+            $builder->join('users', 'users.id = complaint.user_id');
+            $query = $builder->orderBy('resolve')->get();
+
+            $data['complaints'] = $query->getResult('array');
             return view('complaint/view',$data);
+            
             
         }
         public function create()
@@ -23,6 +30,7 @@ class Complaint extends Controller
         }
         public function store()
         {
+            $session = \Config\Services::session($config);
             helper('form','session');
             $complaintModel = new complaintModel();
             $model = new binModel();
@@ -30,10 +38,9 @@ class Complaint extends Controller
 
             if (! $this->validate([
                 'place' => 'required',
-                'complaint'  => 'required|min_length[3]|max_length[255]'
+                'complaint'  => 'required|min_length[3]'
             ]))
             {
-                
                 return view('complaint/create',$data);
             }
             else
@@ -41,10 +48,10 @@ class Complaint extends Controller
                 $place = $model->find($_POST['place']);
                 $data = [
                     'place' => $place['destination'],
-                    'complaint'    => $_POST['complaint']
+                    'complaint'    => $_POST['complaint'],
+                    'user_id' => $_SESSION['id']
                 ];
                 if($complaintModel->insert($data)){
-                    $session = \Config\Services::session($config);
 
                     $_SESSION['success'] = 'Complaint Created';
                     $session->markAsFlashdata('success');
@@ -52,9 +59,19 @@ class Complaint extends Controller
                     $model = new complaintModel();
                     $data['complaints'] = $model->findAll();
 
-                    return redirect('complaint/view',$data);
+                    return redirect('complaint',$data);
                 }
 
             }
+        }
+
+        public function resolve($id){
+            $model = new complaintModel();
+            $data = [
+                'resolve' => 1
+            ];
+            $model->update($id, $data);
+            
+            return redirect('complaint');
         }
 }

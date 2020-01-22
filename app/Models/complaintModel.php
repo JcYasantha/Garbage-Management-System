@@ -5,11 +5,11 @@ use CodeIgniter\Model;
 class complaintModel extends Model
 {
         protected $table      = 'complaint';
-        protected $primaryKey = 'id';
+        protected $primaryKey = 'Cid';
 
         protected $returnType = 'array';
 
-        protected $allowedFields = ['place', 'complaint'];
+        protected $allowedFields = ['place', 'complaint','user_id','resolve'];
 
 
 

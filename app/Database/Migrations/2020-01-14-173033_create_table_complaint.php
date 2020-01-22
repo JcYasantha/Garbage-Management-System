@@ -6,7 +6,7 @@ class CreateTableComplaint extends Migration
 {public function up()
 	{
 			$this->forge->addField([
-					'id'          => [
+					'Cid'          => [
 							'type'           => 'INT',
 							'constraint'     => 5,
 							'unsigned'       => TRUE,
@@ -19,9 +19,19 @@ class CreateTableComplaint extends Migration
 					'complaint'       => [
 						'type'           => 'TEXT',
 						'constraint'     => '255',
+					],
+					'resolve'       => [
+						'type'           => 'BOOLEAN',
+						'default'     => 0,
+					],
+					'user_id'       => [
+						'type'           => 'INT',
+						'constraint'     => 5,
+						'unsigned'       => TRUE,
 					]
 			]);
 			$this->forge->addKey('id', TRUE);
+			$this->forge->addForeignKey('user_id','users','id');
 			$this->forge->createTable('complaint');
 	}
 

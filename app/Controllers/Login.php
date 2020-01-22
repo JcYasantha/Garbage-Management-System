@@ -38,6 +38,7 @@ class Login extends Controller
                     if($user['userRole']=== 'admin'){
 
                         $newdata = [
+                            'id'        => $user['id'],
                             'email'     => $data['email'],
                             'userRole'  => 'admin',
                             'logged_in' => TRUE
@@ -47,6 +48,7 @@ class Login extends Controller
                     elseif($user['userRole']=== 'driver'){
 
                         $newdata = [
+                            'id'        => $user['id'],
                             'email'     => $data['email'],
                             'userRole'  => 'driver',
                             'logged_in' => TRUE
@@ -56,6 +58,7 @@ class Login extends Controller
                     elseif($user['userRole']=== 'user'){
 
                         $newdata = [
+                            'id'        => $user['id'],
                             'email'     => $data['email'],
                             'userRole'  => 'user',
                             'logged_in' => TRUE

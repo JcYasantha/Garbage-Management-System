@@ -84,9 +84,10 @@ $routes->get('bin/create','Bin::create', ['filter' => 'aunthenticate']);
 $routes->post('bin','Bin::store', ['filter' => 'aunthenticate']);
 
 //routes for complaints
-$routes->get('complaint','Complaint::index', ['filter' => 'aunthenticate']);
+$routes->get('complaint','Complaint::index', ['filter' => 'aunthenticate'],['as' => 'complaint']);
 $routes->get('complaint/create','Complaint::create', ['filter' => 'aunthenticate']);
 $routes->post('complaint/store','Complaint::store', ['filter' => 'aunthenticate']);
+$routes->add('resolve/(:num)','Complaint::resolve/$1', ['filter' => 'aunthenticate']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
