@@ -7,7 +7,7 @@ class Driver extends Controller
 {
         public function index()
         {
-            //
+            return view('driver/view');
         }
 
         public function create(){
@@ -40,10 +40,62 @@ class Driver extends Controller
                     $_SESSION['success'] = 'Driver Created Successfully';
                     $session->markAsFlashdata('success');
                     
-                    return redirect('driver/create');
+                    return redirect('driver');
                 }
 
             }
+        }
+
+        public function fetch(){
+
+            $output = '';
+            $query = '';
+
+            $db = \Config\Database::connect();
+        
+            $builder=$db->table('driver');
+            $builder->select('*');
+
+            if($_POST['query'] != ''){
+                $query = $_POST['query'];
+                $builder->like('fullname', $query);
+                $builder->orLike('email', $query);
+                $builder->orLike('phone', $query);
+            }
+
+            $data = $builder->get();
+            $output .= '
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone No</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+
+            if(!empty($data->getResult('array'))){
+                foreach($data->getResult() as $row){
+                    $output .= '
+                    
+                        <tr>
+                            <td>'.$row->fullname.'</td>
+                            <td>'.$row->email.'</td>
+                            <td>'.$row->phone.'</td>
+                        </tr>
+                    ';
+                }
+            }else{
+                $output .= '<tr>
+                                <td colspan="5" class="text-center font-weight-bold">No Data Found</td>
+                            </tr>';
+            }
+            $output .= '</tbody>
+                        </table>';
+            echo $output;
+
         }
         
 
