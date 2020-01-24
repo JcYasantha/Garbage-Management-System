@@ -90,6 +90,10 @@ $routes->get('complaint/Resolved','Complaint::Resolved', ['filter' => 'aunthenti
 $routes->get('complaint/create','Complaint::create', ['filter' => 'aunthenticate']);
 $routes->post('complaint/store','Complaint::store', ['filter' => 'aunthenticate']);
 $routes->add('resolve/(:num)','Complaint::resolve/$1', ['filter' => 'aunthenticate']);
+
+//routes for driver
+$routes->get('driver/create','Driver::create', ['filter' => 'aunthenticate']);
+$routes->post('driver/store','Driver::store', ['filter' => 'aunthenticate']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
