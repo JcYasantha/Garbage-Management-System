@@ -74,4 +74,30 @@ class Complaint extends Controller
             
             return redirect('complaint');
         }
+
+        public function NeedAction(){
+            $db = \Config\Database::connect();
+        
+            $builder=$db->table('complaint');
+            $builder->select('*');
+            $builder->join('users', 'users.id = complaint.user_id');
+            $builder->where('resolve',0);
+            $query = $builder->orderBy('resolve')->get();
+
+            $data['complaints'] = $query->getResult('array');
+            return view('complaint/view',$data);
+        }
+
+        public function Resolved(){
+            $db = \Config\Database::connect();
+        
+            $builder=$db->table('complaint');
+            $builder->select('*');
+            $builder->join('users', 'users.id = complaint.user_id');
+            $builder->where('resolve',1);
+            $query = $builder->orderBy('resolve')->get();
+
+            $data['complaints'] = $query->getResult('array');
+            return view('complaint/view',$data);
+        }
 }
