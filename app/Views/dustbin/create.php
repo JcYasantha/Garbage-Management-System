@@ -3,6 +3,7 @@
     <div class="card my-5">
         <div class="card-header">
             Create A Bin
+            <a type="button" href="<?php echo base_url(); ?>/bin/index" class="btn btn-primary btn-sm mb-2 float-right">View Bins</a>
         </div>
         <div class="card-body">
             <form action="<?php echo base_url(); ?>/bin/store" method="post">
