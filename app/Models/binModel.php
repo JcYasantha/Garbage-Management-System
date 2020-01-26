@@ -36,11 +36,12 @@ class binModel extends Model
             ];     
 
            if($query->insert($data)){
-               $_SESSION['success'] = 'New Bin Successfully Created';
-               $session->markAsFlashdata('success');
-               echo view('dustbin/create');
+               
+               return;
            }else{
 
            }
         }
+
+        
 }
