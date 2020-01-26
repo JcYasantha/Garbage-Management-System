@@ -71,6 +71,7 @@ class Driver extends Controller
                         <th scope="col">Full Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone No</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,6 +85,7 @@ class Driver extends Controller
                             <td>'.$row->fullname.'</td>
                             <td>'.$row->email.'</td>
                             <td>'.$row->phone.'</td>
+                            <td><a class="btn btn-danger btn-sm" href="'.base_url().'/driver/delete/'.$row->Did.'" type="button">delete</a></td>
                         </tr>
                     ';
                 }
@@ -96,6 +98,18 @@ class Driver extends Controller
                         </table>';
             echo $output;
 
+        }
+
+        public function delete($id){
+            $session = \Config\Services::session($config);
+            $model = new driverModel();
+            if($model->where('Did', $id)->delete()){
+                $_SESSION['success'] = 'Driver Deleted Successfully';
+                    $session->markAsFlashdata('success');
+                    
+                    return redirect('driver');
+            }
+            
         }
         
 

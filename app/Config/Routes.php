@@ -98,6 +98,7 @@ $routes->get('driver','Driver::index', ['filter' => 'aunthenticate'],['as' => 'd
 $routes->get('driver/create','Driver::create', ['filter' => 'aunthenticate']);
 $routes->post('driver/store','Driver::store', ['filter' => 'aunthenticate']);
 $routes->post('driver/fetch','Driver::fetch', ['filter' => 'aunthenticate']);
+$routes->add('driver/delete/(:num)','Driver::delete/$1', ['filter' => 'aunthenticate']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
