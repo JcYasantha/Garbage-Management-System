@@ -2,6 +2,15 @@
 <div class="container my-5">
     <a type="button" href="<?php echo base_url(); ?>/complaint/create"
         class="btn btn-primary mb-2 float-right">Create</a>
+
+    <a class="btn btn-light dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">Filter</a>
+
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="<?php echo base_url(); ?>/complaint">All</a>
+        <a class="dropdown-item" style="color:red;" href="<?php echo base_url(); ?>/complaint/NeedAction">Need Action</a>
+        <a class="dropdown-item" style="color:green;" href="<?php echo base_url(); ?>/complaint/Resolved">Resolved</a>
+    </div>
     <table class="table">
         <thead class="thead-light">
             <tr>

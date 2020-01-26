@@ -16,7 +16,7 @@
             <img class="card-img-top" src="/driver1.png" alt="driver" style="width:286px; height:250px">
                 <div class="card-body text-center">
                     <h5 class="card-title">Drivers</h5>
-                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="<?php echo base_url(); ?>/driver/create" class="btn btn-primary">View</a>
                 </div>
             </div>
         </div>
