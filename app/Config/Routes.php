@@ -82,6 +82,9 @@ $routes->add('dashboard', 'login::dash',['filter' => 'aunthenticate'],['as' => '
 //routes for dustbin
 $routes->get('bin/create','Bin::create', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
 $routes->get('bin','Bin::index', ['filter' => 'aunthenticate'],['as' => 'bin']);
+
+$routes->post('bin/update/(:num)','Bin::update/$1', ['filter' => 'aunthenticate']);
+$routes->post('bin/delete/(:num)','Bin::delete/$1', ['filter' => 'aunthenticate']);
 $routes->post('bin/store','Bin::store', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
 $routes->post('bin/update/(:num)','Bin::update/$1', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
 
