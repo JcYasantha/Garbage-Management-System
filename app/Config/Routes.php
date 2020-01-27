@@ -80,11 +80,13 @@ $routes->get('logout', 'Login::logout');
 $routes->add('dashboard', 'login::dash',['filter' => 'aunthenticate'],['as' => 'dashboard']);
 
 //routes for dustbin
-$routes->get('bin/create','Bin::create', ['filter' => 'aunthenticate']);
+$routes->get('bin/create','Bin::create', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
 $routes->get('bin','Bin::index', ['filter' => 'aunthenticate'],['as' => 'bin']);
-$routes->post('bin/store','Bin::store', ['filter' => 'aunthenticate']);
+
 $routes->post('bin/update/(:num)','Bin::update/$1', ['filter' => 'aunthenticate']);
 $routes->post('bin/delete/(:num)','Bin::delete/$1', ['filter' => 'aunthenticate']);
+$routes->post('bin/store','Bin::store', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
+$routes->post('bin/update/(:num)','Bin::update/$1', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
 
 //routes for complaints
 $routes->get('complaint','Complaint::index', ['filter' => 'aunthenticate'],['as' => 'complaint']);
@@ -92,13 +94,14 @@ $routes->get('complaint/NeedAction','Complaint::NeedAction', ['filter' => 'aunth
 $routes->get('complaint/Resolved','Complaint::Resolved', ['filter' => 'aunthenticate']);
 $routes->get('complaint/create','Complaint::create', ['filter' => 'aunthenticate']);
 $routes->post('complaint/store','Complaint::store', ['filter' => 'aunthenticate']);
-$routes->add('resolve/(:num)','Complaint::resolve/$1', ['filter' => 'aunthenticate']);
+$routes->add('resolve/(:num)','Complaint::resolve/$1', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
 
 //routes for driver
 $routes->get('driver','Driver::index', ['filter' => 'aunthenticate'],['as' => 'driver']);
-$routes->get('driver/create','Driver::create', ['filter' => 'aunthenticate']);
-$routes->post('driver/store','Driver::store', ['filter' => 'aunthenticate']);
-$routes->post('driver/fetch','Driver::fetch', ['filter' => 'aunthenticate']);
+$routes->get('driver/create','Driver::create', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
+$routes->post('driver/store','Driver::store', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
+$routes->post('driver/fetch','Driver::fetch', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
+$routes->add('driver/delete/(:num)','Driver::delete/$1', ['filter' => 'aunthenticate' ,'filter' => 'isAdmin']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
