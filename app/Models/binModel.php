@@ -32,7 +32,10 @@ class binModel extends Model
            $data = [
                'city' => $Formarray['city'],
                'destination'  => $Formarray['destination'],
-               'best_route'  => $Formarray['best_route']
+               'best_route'  => $Formarray['best_route'],
+               'driver'  => $Formarray['driver']
+
+
             ];     
 
            if($query->insert($data)){

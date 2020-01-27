@@ -3,6 +3,7 @@
 use CodeIgniter\Controller;
 use App\Models\binModel;
 use App\Models\userModel;
+use App\Models\driverModel;
 
 class Bin extends Controller
 {
@@ -19,21 +20,29 @@ class Bin extends Controller
         }
         public function create()
         {
-            return view('dustbin/create');
+            $drivermodel = new driverModel();
+            $data['drivers'] = $drivermodel->findAll();
+            return view('dustbin/create',$data);
+
+            
         }
         
         public function store()
         {
             helper('form','session');
             $model = new binModel();
+            $drivermodel = new driverModel();
+            $data['drivers'] = $drivermodel->findAll();
+            
 
             if (! $this->validate([
                 'city' => 'required|min_length[3]|max_length[255]',
                 'destination'  => 'required|min_length[3]|max_length[255]',
-                'best_route'  => 'required|min_length[3]'
+                'best_route'  => 'required|min_length[3]',
+                'best_route'  => 'required'
             ]))
             {
-                return view('dustbin/create');
+                return view('dustbin/create',$data);
 
             }
             else
@@ -103,6 +112,26 @@ class Bin extends Controller
             }
 
         }
-        
 
+        public function delete($id)
+        {
+            $session = \Config\Services::session($config);
+            helper('form','session');
+            $binModel = new binModel();
+
+            
+            $binModel->where('id',$id)->delete();
+        
+            $_SESSION['success'] = 'Bin Deleted';
+            $session->markAsFlashdata('success');
+
+            $db = \Config\Database::connect();
+
+            $builder=$db->table('bin');
+            $builder->select('*');
+            $query = $builder->orderBy('city')->get();
+
+            $data['bins'] = $query->getResult('array');
+            return view('dustbin/binview',$data);
+        }
 }

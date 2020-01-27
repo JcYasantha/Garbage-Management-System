@@ -22,7 +22,7 @@
            <th><?= $bin['best_route'] ?></th>
            <th><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?php echo $bin['id'];?>">
                 Update</button></th>
-           <th><a type="button" href="<?php echo base_url(); ?>/bin/create"
+           <th><a type="button" href="<?php echo base_url().'/bin/delete/'.$bin['id'];?>"
                  class="btn btn-danger btn-sm">delete</a></th>
             
 
