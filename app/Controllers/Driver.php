@@ -9,7 +9,7 @@ class Driver extends Controller
         {
             return view('driver/view');
         }
-
+ 
         public function create(){
             return view('driver/create');
         }
