@@ -7,9 +7,12 @@ class Driver extends Controller
 {
         public function index()
         {
+            $this-> test();
             return view('driver/view');
         }
-
+        public function test(){
+            echo "donr";
+        }
         public function create(){
             return view('driver/create');
         }

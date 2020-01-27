@@ -10,7 +10,8 @@ class Filters extends BaseConfig
 		'csrf'     => \CodeIgniter\Filters\CSRF::class,
 		'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
-		'aunthenticate' => \App\Filters\newFilter::class
+		'aunthenticate' => \App\Filters\newFilter::class,
+		'isAdmin' => \App\Filters\isAdmin::class
 	];
 
 	// Always applied before every request
